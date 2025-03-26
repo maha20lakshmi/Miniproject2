@@ -1,0 +1,173 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function to display the menu in rupees
+void displayMenu() {
+    printf("\n---- Food Menu ----\n");
+    printf("1. Pizza - ₹200.00\n");
+    printf("2. Burger - ₹100.00\n");
+    printf("3. Pasta - ₹150.00\n");
+    printf("4. Salad - ₹80.00\n");
+    printf("5. Soda - ₹40.00\n");
+    printf("6. Noodles - ₹120.00\n");
+    printf("7. Fries - ₹60.00\n");
+    printf("8. Sandwich - ₹80.00\n");
+    printf("9. Ice Cream - ₹50.00\n");
+    printf("10. Juice - ₹70.00\n");
+    printf("11. Chapati - ₹20.00\n");
+    printf("12. Dal - ₹40.00\n");
+    printf("13. Rice - ₹30.00\n");
+    printf("14. Vegetable Curry - ₹60.00\n");
+    printf("15. Pickle - ₹15.00\n");
+    printf("--------------------\n");
+}
+
+// Function to calculate the total price in rupees
+float calculateTotal(int pizzaCount, int burgerCount, int pastaCount, int saladCount, int sodaCount,
+                     int noodlesCount, int friesCount, int sandwichCount, int iceCreamCount, int juiceCount,
+                     int chapatiCount, int dalCount, int riceCount, int curryCount, int pickleCount) {
+    // Adjusted low budget prices for each item
+    float pizzaPrice = 200.00, burgerPrice = 100.00, pastaPrice = 150.00, saladPrice = 80.00, sodaPrice = 40.00;
+    float noodlesPrice = 120.00, friesPrice = 60.00, sandwichPrice = 80.00, iceCreamPrice = 50.00, juicePrice = 70.00;
+    float chapatiPrice = 20.00, dalPrice = 40.00, ricePrice = 30.00, curryPrice = 60.00, picklePrice = 15.00;
+
+    return (pizzaCount * pizzaPrice) + (burgerCount * burgerPrice) + (pastaCount * pastaPrice) +
+           (saladCount * saladPrice) + (sodaCount * sodaPrice) + (noodlesCount * noodlesPrice) +
+           (friesCount * friesPrice) + (sandwichCount * sandwichPrice) + (iceCreamCount * iceCreamPrice) +
+           (juiceCount * juicePrice) + (chapatiCount * chapatiPrice) + (dalCount * dalPrice) +
+           (riceCount * ricePrice) + (curryCount * curryPrice) + (pickleCount * picklePrice);
+}
+
+// Main function to handle the order process
+int main() {
+    int pizzaCount = 0, burgerCount = 0, pastaCount = 0, saladCount = 0, sodaCount = 0;
+    int noodlesCount = 0, friesCount = 0, sandwichCount = 0, iceCreamCount = 0, juiceCount = 0;
+    int chapatiCount = 0, dalCount = 0, riceCount = 0, curryCount = 0, pickleCount = 0;
+    int choice, quantity;
+    char continueOrder = 'y';
+
+    printf("Welcome to the Low Budget Food Order Management System!\n");
+
+    // Main ordering loop
+    while (continueOrder == 'y' || continueOrder == 'Y') {
+        displayMenu();
+        printf("Enter your choice (1-15): ");
+        scanf("%d", &choice);
+
+        // Handling different menu items
+        switch (choice) {
+            case 1:
+                printf("You chose Pizza. How many would you like to order? ");
+                scanf("%d", &quantity);
+                pizzaCount += quantity;
+                break;
+            case 2:
+                printf("You chose Burger. How many would you like to order? ");
+                scanf("%d", &quantity);
+                burgerCount += quantity;
+                break;
+            case 3:
+                printf("You chose Pasta. How many would you like to order? ");
+                scanf("%d", &quantity);
+                pastaCount += quantity;
+                break;
+            case 4:
+                printf("You chose Salad. How many would you like to order? ");
+                scanf("%d", &quantity);
+                saladCount += quantity;
+                break;
+            case 5:
+                printf("You chose Soda. How many would you like to order? ");
+                scanf("%d", &quantity);
+                sodaCount += quantity;
+                break;
+            case 6:
+                printf("You chose Noodles. How many would you like to order? ");
+                scanf("%d", &quantity);
+                noodlesCount += quantity;
+                break;
+            case 7:
+                printf("You chose Fries. How many would you like to order? ");
+                scanf("%d", &quantity);
+                friesCount += quantity;
+                break;
+            case 8:
+                printf("You chose Sandwich. How many would you like to order? ");
+                scanf("%d", &quantity);
+                sandwichCount += quantity;
+                break;
+            case 9:
+                printf("You chose Ice Cream. How many would you like to order? ");
+                scanf("%d", &quantity);
+                iceCreamCount += quantity;
+                break;
+            case 10:
+                printf("You chose Juice. How many would you like to order? ");
+                scanf("%d", &quantity);
+                juiceCount += quantity;
+                break;
+            case 11:
+                printf("You chose Chapati. How many would you like to order? ");
+                scanf("%d", &quantity);
+                chapatiCount += quantity;
+                break;
+            case 12:
+                printf("You chose Dal. How many would you like to order? ");
+                scanf("%d", &quantity);
+                dalCount += quantity;
+                break;
+            case 13:
+                printf("You chose Rice. How many would you like to order? ");
+                scanf("%d", &quantity);
+                riceCount += quantity;
+                break;
+            case 14:
+                printf("You chose Vegetable Curry. How many would you like to order? ");
+                scanf("%d", &quantity);
+                curryCount += quantity;
+                break;
+            case 15:
+                printf("You chose Pickle. How many would you like to order? ");
+                scanf("%d", &quantity);
+                pickleCount += quantity;
+                break;
+            default:
+                printf("Invalid choice. Please select a valid option.\n");
+                continue;
+        }
+
+        // Ask if the user wants to continue
+        printf("Would you like to order more items? (y/n): ");
+        scanf(" %c", &continueOrder);  // Using " %c" to catch any extra newline character
+    }
+
+    // Calculating total price in rupees
+    float total = calculateTotal(pizzaCount, burgerCount, pastaCount, saladCount, sodaCount,
+                                 noodlesCount, friesCount, sandwichCount, iceCreamCount, juiceCount,
+                                 chapatiCount, dalCount, riceCount, curryCount, pickleCount);
+
+    // Displaying the final order in rupees
+    printf("\n---- Final Order ----\n");
+    if (pizzaCount > 0) printf("Pizza: %d x ₹200.00\n", pizzaCount);
+    if (burgerCount > 0) printf("Burger: %d x ₹100.00\n", burgerCount);
+    if (pastaCount > 0) printf("Pasta: %d x ₹150.00\n", pastaCount);
+    if (saladCount > 0) printf("Salad: %d x ₹80.00\n", saladCount);
+    if (sodaCount > 0) printf("Soda: %d x ₹40.00\n", sodaCount);
+    if (noodlesCount > 0) printf("Noodles: %d x ₹120.00\n", noodlesCount);
+    if (friesCount > 0) printf("Fries: %d x ₹60.00\n", friesCount);
+    if (sandwichCount > 0) printf("Sandwich: %d x ₹80.00\n", sandwichCount);
+    if (iceCreamCount > 0) printf("Ice Cream: %d x ₹50.00\n", iceCreamCount);
+    if (juiceCount > 0) printf("Juice: %d x ₹70.00\n", juiceCount);
+    if (chapatiCount > 0) printf("Chapati: %d x ₹20.00\n", chapatiCount);
+    if (dalCount > 0) printf("Dal: %d x ₹40.00\n", dalCount);
+    if (riceCount > 0) printf("Rice: %d x ₹30.00\n", riceCount);
+    if (curryCount > 0) printf("Vegetable Curry: %d x ₹60.00\n", curryCount);
+    if (pickleCount > 0) printf("Pickle: %d x ₹15.00\n", pickleCount);
+    printf("----------------------\n");
+    printf("Total: ₹%.2f\n", total);
+
+    // Thanking the customer
+    printf("Thank you for your order! Have a great day!\n");
+
+    return 0;
+}
