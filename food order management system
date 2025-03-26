@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+void displayMenu() {
+    printf("\n---- Food Menu ----\n");
+    printf("1. Pizza - ₹719.20\n");
+    printf("2. Burger - ₹360.00\n");
+    printf("3. Pasta - ₹560.00\n");
+    printf("4. Salad - ₹280.00\n");
+    printf("5. Soda - ₹120.00\n");
+    printf("--------------------\n");
+}
+float calculateTotal(int pizzaCount, int burgerCount, int pastaCount, int saladCount, int sodaCount) {
+    float pizzaPrice = 719.20, burgerPrice = 360.00, pastaPrice = 560.00, saladPrice = 280.00, sodaPrice = 120.00;
+    return (pizzaCount * pizzaPrice) + (burgerCount * burgerPrice) + (pastaCount * pastaPrice) +
+           (saladCount * saladPrice) + (sodaCount * sodaPrice);
+}
+int main() {
+    int pizzaCount = 0, burgerCount = 0, pastaCount = 0, saladCount = 0, sodaCount = 0;
+    int choice, quantity;
+    char continueOrder = 'y';
+    printf("Welcome to the Food Order Management System!\n");
+    while (continueOrder == 'y' || continueOrder == 'Y') {
+        displayMenu();
+        printf("Enter your choice (1-5): ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                printf("You chose Pizza. How many would you like to order? ");
+                scanf("%d", &quantity);
+                pizzaCount += quantity;
+                break;
+            case 2:
+                printf("You chose Burger. How many would you like to order? ");
+                scanf("%d", &quantity);
+                burgerCount += quantity;
+                break;
+            case 3:
+                printf("You chose Pasta. How many would you like to order? ");
+                scanf("%d", &quantity);
+                pastaCount += quantity;
+                break;
+            case 4:
+                printf("You chose Salad. How many would you like to order? ");
+                scanf("%d", &quantity);
+                saladCount += quantity;
+                break;
+            case 5:
+                printf("You chose Soda. How many would you like to order? ");
+                scanf("%d", &quantity);
+                sodaCount += quantity;
+                break;
+            default:
+                printf("Invalid choice. Please select a valid option.\n");
+                continue;
+        }
+        printf("Would you like to order more items? (y/n): ");
+        scanf(" %c", &continueOrder);  
+    }
+    float total = calculateTotal(pizzaCount, burgerCount, pastaCount, saladCount, sodaCount);
+    printf("\n---- Final Order ----\n");
+    if (pizzaCount > 0) printf("Pizza: %d x ₹719.20\n", pizzaCount);
+    if (burgerCount > 0) printf("Burger: %d x ₹360.00\n", burgerCount);
+    if (pastaCount > 0) printf("Pasta: %d x ₹560.00\n", pastaCount);
+    if (saladCount > 0) printf("Salad: %d x ₹280.00\n", saladCount);
+    if (sodaCount > 0) printf("Soda: %d x ₹120.00\n", sodaCount);
+    printf("----------------------\n");
+    printf("Total: ₹%.2f\n", total);
+    printf("Thank you for your order! Have a great day!\n");
+    return 0;
+}
