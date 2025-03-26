@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Function to display the menu in rupees
 void displayMenu() {
     printf("\n---- Food Menu ----\n");
     printf("1. Pizza - ₹200.00\n");
@@ -22,11 +21,11 @@ void displayMenu() {
     printf("--------------------\n");
 }
 
-// Function to calculate the total price in rupees
+
 float calculateTotal(int pizzaCount, int burgerCount, int pastaCount, int saladCount, int sodaCount,
                      int noodlesCount, int friesCount, int sandwichCount, int iceCreamCount, int juiceCount,
                      int chapatiCount, int dalCount, int riceCount, int curryCount, int pickleCount) {
-    // Adjusted low budget prices for each item
+    
     float pizzaPrice = 200.00, burgerPrice = 100.00, pastaPrice = 150.00, saladPrice = 80.00, sodaPrice = 40.00;
     float noodlesPrice = 120.00, friesPrice = 60.00, sandwichPrice = 80.00, iceCreamPrice = 50.00, juicePrice = 70.00;
     float chapatiPrice = 20.00, dalPrice = 40.00, ricePrice = 30.00, curryPrice = 60.00, picklePrice = 15.00;
@@ -38,7 +37,7 @@ float calculateTotal(int pizzaCount, int burgerCount, int pastaCount, int saladC
            (riceCount * ricePrice) + (curryCount * curryPrice) + (pickleCount * picklePrice);
 }
 
-// Main function to handle the order process
+
 int main() {
     int pizzaCount = 0, burgerCount = 0, pastaCount = 0, saladCount = 0, sodaCount = 0;
     int noodlesCount = 0, friesCount = 0, sandwichCount = 0, iceCreamCount = 0, juiceCount = 0;
@@ -48,13 +47,13 @@ int main() {
 
     printf("Welcome to the Low Budget Food Order Management System!\n");
 
-    // Main ordering loop
+
     while (continueOrder == 'y' || continueOrder == 'Y') {
         displayMenu();
         printf("Enter your choice (1-15): ");
         scanf("%d", &choice);
 
-        // Handling different menu items
+        
         switch (choice) {
             case 1:
                 printf("You chose Pizza. How many would you like to order? ");
@@ -135,18 +134,16 @@ int main() {
                 printf("Invalid choice. Please select a valid option.\n");
                 continue;
         }
-
-        // Ask if the user wants to continue
         printf("Would you like to order more items? (y/n): ");
-        scanf(" %c", &continueOrder);  // Using " %c" to catch any extra newline character
+        scanf(" %c", &continueOrder);  
     }
 
-    // Calculating total price in rupees
+    
     float total = calculateTotal(pizzaCount, burgerCount, pastaCount, saladCount, sodaCount,
                                  noodlesCount, friesCount, sandwichCount, iceCreamCount, juiceCount,
                                  chapatiCount, dalCount, riceCount, curryCount, pickleCount);
 
-    // Displaying the final order in rupees
+    
     printf("\n---- Final Order ----\n");
     if (pizzaCount > 0) printf("Pizza: %d x ₹200.00\n", pizzaCount);
     if (burgerCount > 0) printf("Burger: %d x ₹100.00\n", burgerCount);
@@ -165,8 +162,6 @@ int main() {
     if (pickleCount > 0) printf("Pickle: %d x ₹15.00\n", pickleCount);
     printf("----------------------\n");
     printf("Total: ₹%.2f\n", total);
-
-    // Thanking the customer
     printf("Thank you for your order! Have a great day!\n");
 
     return 0;
